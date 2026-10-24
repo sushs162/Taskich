@@ -108,25 +108,17 @@
 
 <img width="1259" height="944" alt="Diagram_2" src="https://github.com/user-attachments/assets/c7dc51aa-c1f9-4628-a8e2-13d133fab46c" />
 
-![Фоновые сервисы: уведомления — диаграмма компонентов](docs/images/notification-services-components.png)
-
 #### 3.2.3. Сервисы доступа: аутентификация и API-ключи — диаграмма компонентов
 
 <img width="1235" height="963" alt="Diagram_3" src="https://github.com/user-attachments/assets/09ae243e-a1b0-42a8-bae2-01deb3ff79ae" />
-
-![Сервисы доступа: аутентификация и API-ключи — диаграмма компонентов](docs/images/access-services-components.png)
 
 #### 3.2.4. Сервисы задач и синхронизации — диаграмма компонентов
 
 <img width="1241" height="977" alt="Diagram_4" src="https://github.com/user-attachments/assets/e4924752-654c-4206-8319-2fb743dd29bf" />
 
-![Сервисы задач и синхронизации — диаграмма компонентов](docs/images/task-sync-services-components.png)
-
 #### 3.2.5. ER-диаграмма базы данных (PostgreSQL + SQLite)
 
-![Uploading Diagram_5.png…]()
-
-![ER-диаграмма базы данных (PostgreSQL + SQLite)](docs/images/database-er.png)
+<img width="1244" height="898" alt="Diagram_5" src="https://github.com/user-attachments/assets/3d575623-d0eb-4ad1-a5b3-70f1d401c0e1" />
 
 Диаграммы должны отражать фактическую архитектуру проекта и реализуемые компоненты. Если какой-либо компонент или сервис не входит в текущую версию приложения, это следует обозначить в подписи или пояснении к диаграмме.
 
