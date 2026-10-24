@@ -102,29 +102,29 @@
 
 #### 3.2.1. Web-панель администрирования — диаграмма компонентов
 
-src/taskich/docs/images/Diagram 1.png
+<img width="1324" height="945" alt="Diagram_1" src="https://github.com/user-attachments/assets/c3d0c3fd-7e35-4b25-9238-4d0dd36d8c7b" />
 
 #### 3.2.2. Фоновые сервисы: уведомления — диаграмма компонентов
 
-<!-- Вставьте диаграмму компонентов фоновых сервисов уведомлений в файл docs/images/notification-services-components.png -->
+<img width="1259" height="944" alt="Diagram_2" src="https://github.com/user-attachments/assets/c7dc51aa-c1f9-4628-a8e2-13d133fab46c" />
 
 ![Фоновые сервисы: уведомления — диаграмма компонентов](docs/images/notification-services-components.png)
 
 #### 3.2.3. Сервисы доступа: аутентификация и API-ключи — диаграмма компонентов
 
-<!-- Вставьте диаграмму компонентов сервисов аутентификации и API-ключей в файл docs/images/access-services-components.png -->
+<img width="1235" height="963" alt="Diagram_3" src="https://github.com/user-attachments/assets/09ae243e-a1b0-42a8-bae2-01deb3ff79ae" />
 
 ![Сервисы доступа: аутентификация и API-ключи — диаграмма компонентов](docs/images/access-services-components.png)
 
 #### 3.2.4. Сервисы задач и синхронизации — диаграмма компонентов
 
-<!-- Вставьте диаграмму компонентов сервисов задач и синхронизации в файл docs/images/task-sync-services-components.png -->
+<img width="1241" height="977" alt="Diagram_4" src="https://github.com/user-attachments/assets/e4924752-654c-4206-8319-2fb743dd29bf" />
 
 ![Сервисы задач и синхронизации — диаграмма компонентов](docs/images/task-sync-services-components.png)
 
 #### 3.2.5. ER-диаграмма базы данных (PostgreSQL + SQLite)
 
-<!-- Вставьте ER-диаграмму базы данных в файл docs/images/database-er.png -->
+![Uploading Diagram_5.png…]()
 
 ![ER-диаграмма базы данных (PostgreSQL + SQLite)](docs/images/database-er.png)
 
