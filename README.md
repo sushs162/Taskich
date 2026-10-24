@@ -102,8 +102,7 @@
 
 #### 3.2.1. Web-панель администрирования — диаграмма компонентов
 
-src/taskich/docs/images
-![Web-панель администрирования — диаграмма компонентов](docs/images/web-admin-components.png)
+docs/images/web-admin-components.png
 
 #### 3.2.2. Фоновые сервисы: уведомления — диаграмма компонентов
 
