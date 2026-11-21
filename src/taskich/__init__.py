@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from taskich!")
+"""Taskich — менеджер задач с FastAPI и Jinja2."""

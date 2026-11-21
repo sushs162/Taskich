@@ -1,15 +1,9 @@
-from taskich.cli import run_cli
-from taskich.data import create_demo_tasks
-from taskich.storage import InMemoryFilterRepository
+"""Единая точка запуска веб-приложения Taskich."""
+import uvicorn
 
 
 def main() -> None:
-    """Запускает консольное приложение Taskich."""
-
-    run_cli(
-        create_demo_tasks(),
-        InMemoryFilterRepository(),
-    )
+    uvicorn.run("taskich.web:app", host="127.0.0.1", port=8000, reload=False)
 
 
 if __name__ == "__main__":
