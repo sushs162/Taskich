@@ -1,0 +1,2 @@
+DEFAULT_STATUS = "todo"
+DEFAULT_PRIORITY = "medium"
