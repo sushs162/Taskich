@@ -1,6 +1,9 @@
+import logging
 from collections.abc import Sequence
 
 from taskich.models import SavedFilter, Task
+
+logger = logging.getLogger(__name__)
 
 
 def search_tasks(tasks: Sequence[Task], query: str) -> list[Task]:
@@ -14,17 +17,14 @@ def search_tasks(tasks: Sequence[Task], query: str) -> list[Task]:
     result: list[Task] = []
 
     for task in tasks:
-        searchable_text = " ".join(
-            [
-                task.title,
-                task.description,
-                *task.tags,
-            ]
-        ).lower()
+        # Ищем в каждом поле отдельно, чтобы запрос не "склеивался"
+        # из конца названия и начала описания.
+        fields = [task.title, task.description, *task.tags]
 
-        if normalized_query in searchable_text:
+        if any(normalized_query in field.lower() for field in fields):
             result.append(task)
 
+    logger.debug("Поиск '%s': найдено %s задач", normalized_query, len(result))
     return result
 
 
@@ -34,9 +34,10 @@ def filter_tasks(
     tags: list[str] | None = None,
     status: str | None = None,
     priority: str | None = None,
-    assignee: str | None = None,
+    assignee_id: int | None = None,
+    project_id: int | None = None,
 ) -> list[Task]:
-    """Фильтрует задачи по тегам, статусу, приоритету и исполнителю."""
+    """Фильтрует задачи по тегам, статусу, приоритету, исполнителю и проекту."""
 
     result = list(tasks)
 
@@ -59,15 +60,13 @@ def filter_tasks(
             task for task in result if task.priority.lower() == normalized_priority
         ]
 
-    if assignee:
-        normalized_assignee = assignee.strip().lower()
-        result = [
-            task
-            for task in result
-            if task.assignee is not None
-            and task.assignee.lower() == normalized_assignee
-        ]
+    if assignee_id is not None:
+        result = [task for task in result if task.assignee_id == assignee_id]
 
+    if project_id is not None:
+        result = [task for task in result if task.project_id == project_id]
+
+    logger.debug("Фильтрация: %s из %s задач", len(result), len(tasks))
     return result
 
 
@@ -78,7 +77,8 @@ def search_and_filter_tasks(
     tags: list[str] | None = None,
     status: str | None = None,
     priority: str | None = None,
-    assignee: str | None = None,
+    assignee_id: int | None = None,
+    project_id: int | None = None,
 ) -> list[Task]:
     """Выполняет поиск и затем применяет выбранные фильтры."""
 
@@ -92,7 +92,8 @@ def search_and_filter_tasks(
         tags=tags,
         status=status,
         priority=priority,
-        assignee=assignee,
+        assignee_id=assignee_id,
+        project_id=project_id,
     )
 
 
@@ -108,5 +109,6 @@ def apply_saved_filter(
         tags=saved_filter.tags,
         status=saved_filter.status,
         priority=saved_filter.priority,
-        assignee=saved_filter.assignee,
+        assignee_id=saved_filter.assignee_id,
+        project_id=saved_filter.project_id,
     )
