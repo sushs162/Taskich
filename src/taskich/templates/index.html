@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskich — задачи</title><link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+<main class="container">
+  <header><h1>Taskich</h1><p>Управление задачами и проектами</p><a href="/docs">Документация API</a></header>
+  <section class="panel"><h2>Поиск задач</h2>
+    <form method="get" action="/"><input name="query" value="{{ query }}" placeholder="Название, описание или тег">
+      <select name="status"><option value="">Все статусы</option>{% for s in ['todo','in-progress','done'] %}<option value="{{ s }}" {% if status == s %}selected{% endif %}>{{ s }}</option>{% endfor %}</select>
+      <button>Найти</button><a class="reset" href="/">Сбросить</a></form>
+  </section>
+  <section class="panel"><h2>Создать задачу</h2>
+    <form method="post" action="/tasks" class="create-form"><input name="title" required maxlength="200" placeholder="Название задачи">
+      <input name="description" placeholder="Описание"><select name="priority"><option value="low">Низкий приоритет</option><option value="medium" selected>Средний приоритет</option><option value="high">Высокий приоритет</option></select>
+      <select name="project_id"><option value="">Без проекта</option>{% for p in projects %}<option value="{{ p.id }}">{{ p.name }}</option>{% endfor %}</select><button>Добавить</button></form>
+  </section>
+  <section class="panel"><h2>Задачи ({{ tasks|length }})</h2>
+    {% if tasks %}<div class="task-list">{% for task in tasks %}<article class="task"><div><h3>{{ task.title }}</h3><p>{{ task.description }}</p><small>Статус: {{ task.status }} · Приоритет: {{ task.priority }} · Теги: {{ task.tags|join(', ') }}</small></div>
+      <form method="post" action="/tasks/{{ task.id }}/delete"><button class="danger" aria-label="Удалить задачу">Удалить</button></form></article>{% endfor %}</div>
+    {% else %}<p>Задач пока нет. Создайте первую задачу выше.</p>{% endif %}
+  </section>
+</main>
+</body></html>
